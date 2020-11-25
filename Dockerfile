@@ -3,30 +3,8 @@ FROM qtrj.i234.me:8084/node:10.19.0
 
 MAINTAINER felixyin<ybkk1027@gmail.com>
 
-# 手动更新代码、编辑、测试脚本
-#COPY update.sh /usr/local/bin/update
-
-#RUN chmod uo+x /usr/local/bin/update
-
-# 基础镜像中已经安装基本工具和运行时
-#RUN apt-get update; \
-#    apt-get -y upgrade
-
-# node 镜像中已存在
-#RUN apt-get -y install git
-
-# 方便查看日志和修改文件
-#RUN apt-get -y install vim
-
 # 安装npm模块
 RUN npm install pm2 bower -g --registry=https://registry.npm.taobao.org;
-
-# v1: clone github上项目源码
-#RUN mkdir -p /usr/src/node; \
-#    cd /usr/src/node; \
-#    git clone https://github.com/felixyin/sysm.git -b master; \
-#    cd sysm;
-# end
 
 VOLUME /code
 
