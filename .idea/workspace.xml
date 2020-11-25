@@ -107,6 +107,7 @@
       <workItem from="1606285415701" duration="1285000" />
       <workItem from="1606286707373" duration="228000" />
       <workItem from="1606287158287" duration="4533000" />
+      <workItem from="1606291700375" duration="4367000" />
     </task>
     <servers />
   </component>
@@ -150,10 +151,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2020" y="80" width="1720" height="890" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606288165284" />
-    <state x="3072" y="138" width="638" height="942" key="find.popup" timestamp="1606291610661">
+    <state x="3194" y="278" width="389" height="670" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606297900783">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="3072" y="138" width="638" height="942" key="find.popup/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606291610661" />
+    <state x="3194" y="278" width="389" height="670" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606297900783" />
+    <state x="3072" y="138" width="638" height="942" key="find.popup" timestamp="1606298146245">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="3072" y="138" width="638" height="942" key="find.popup/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606298146245" />
     <state x="2602" y="338" width="550" height="389" key="jetbrains.nodejs.interpreters-dialog" timestamp="1606286671344">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

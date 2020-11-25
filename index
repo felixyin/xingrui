@@ -82,7 +82,7 @@ if (argv.g || argv.kill) {
     process.exit();
 }
 
-process.env.lrs_PORT = argv.p || process.env.lrs_PORT || '8080';
+process.env.lrs_PORT = argv.p || process.env.lrs_PORT || '10001';
 process.env.MYSQL_PORT = argv.t || process.env.MYSQL_PORT || '3306';
 process.env.MYSQL_IP = argv.a || process.env.MYSQL_IP || '0.0.0.0';
 process.env.MYSQL_CONNECTION_LIMIT = argv.c || process.env.MYSQL_CONNECTION_LIMIT || '50';
