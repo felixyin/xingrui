@@ -1,0 +1,68 @@
+extends ../../layout_nomenu
+
+block content
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-iframe.hide(name='edit-iframe')
+                form#edit-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-0')
+                        .col-xs-9
+                            input#ff-0.col-xs-6(type='text', name='id', value='#{id || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-58') 分析结果
+                        .col-xs-9
+                            textarea#ff-58.col-xs-6.autosize-transition(name='report_result', rows=5, placeholder='')
+                                | #{report_result || ""}
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-59') 建议
+                        .col-xs-9
+                            textarea#ff-59.col-xs-6.autosize-transition(name='report_advice', rows=5, placeholder='')
+                                | #{report_advice || ""}
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-60') 是否发送
+                        .col-xs-9
+                            select#ff-60.col-xs-6(name='report_is_send')
+                                option(value=1) 不发送
+                                option(value=2) 发送
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-61') 分析人
+                        .col-xs-9
+                            input#ff-61.col-xs-6(type='text', name='reporter', value='#{reporter || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-50') 状态
+                        .col-xs-9
+                            input#ff-50.col-xs-6(type='text', name='status', value='#{status || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+
+    script.
+        $(".ipt-date").datepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            pickerPosition: "bottom-right"
+        });
+        $('#report_is_send').children().each(function (i, v) {
+            if ($(this).attr('value') == '#{report_is_send}') {
+                $(this).attr('selected', 'selected');
+            }
+        });
+

@@ -1,0 +1,51 @@
+extends ../../layout_nomenu
+
+block content
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-ck-iframe.hide(name='edit-ck-iframe')
+                form#edit-ck-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-ck-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    #fg-dtmbh-before.space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-15') 出库人员
+                        .col-xs-9
+                            input#ff-15.col-xs-6(type='text', name='sample_outer', value='#{sample_outer || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-16') 交接人员
+                        .col-xs-9
+                            input#ff-16.col-xs-6(type='text', name='extract_handover', value='#{extract_handover || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+
+    script.
+
+        var idx = -1;
+        function myNext() {
+            idx++;
+            var barcodeShortInput = jade.templates.dnaBarcodeShortInput({idx: idx});
+            $('#fg-dtmbh-before').before(barcodeShortInput);
+        }
+        myNext();
+
+        var barcodeShortStr = '#{barcodeShortArray}';
+        // console.log(barcodeShortStr)
+        if (barcodeShortStr) { // 勾选批量出库模式
+            var barcodeShortArray = barcodeShortStr.split(',');
+            var xxxxx = setInterval(function () {
+                var dom = $('#ff-dtmbh-' + idx);
+                if (dom) {
+                    if (idx <= barcodeShortArray.length) {
+                        var barcodeShort = barcodeShortArray[idx];
+                        if (barcodeShort) {
+                            // console.log(barcodeShort);
+                            dom.val(barcodeShort).triggerHandler('change');
+                        }
+                    }
+                }
+            }, 500);
+        }

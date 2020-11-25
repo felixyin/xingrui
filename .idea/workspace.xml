@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bb1f3005-ed34-4ee2-944a-e491e8603e31" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1klqEQgdXoBaRflyIEIDkMMh3cj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.19.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.47" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="$PROJECT_DIR$/node_modules/grunt" />
+    <property name="last_opened_file_path" value="/usr/local/bin/cnpm" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Grunt.js.uglify">
+    <configuration default="true" type="js.build_tools.grunt">
+      <node-interpreter value="node" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="uglify" type="js.build_tools.grunt" temporary="true">
+      <node-interpreter value="project" />
+      <gruntfile value="$PROJECT_DIR$/Gruntfile.js" />
+      <tasks>
+        <task value="uglify" />
+      </tasks>
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="uglify:my_client" type="js.build_tools.grunt" temporary="true">
+      <node-interpreter value="project" />
+      <gruntfile value="$PROJECT_DIR$/Gruntfile.js" />
+      <tasks>
+        <task value="uglify:my_client" />
+      </tasks>
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="uglify:my_server" type="js.build_tools.grunt" temporary="true">
+      <node-interpreter value="project" />
+      <gruntfile value="$PROJECT_DIR$/Gruntfile.js" />
+      <tasks>
+        <task value="uglify:my_server" />
+      </tasks>
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="my-install" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="my-install" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="my-start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="my-start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.my-start" />
+        <item itemvalue="npm.my-install" />
+        <item itemvalue="Grunt.js.uglify:my_server" />
+        <item itemvalue="Grunt.js.uglify:my_client" />
+        <item itemvalue="Grunt.js.uglify" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb1f3005-ed34-4ee2-944a-e491e8603e31" name="Default Changelist" comment="" />
+      <created>1606285414489</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606285414489</updated>
+      <workItem from="1606285415701" duration="1285000" />
+      <workItem from="1606286707373" duration="228000" />
+      <workItem from="1606287158287" duration="4533000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2581" y="332" width="594" height="414" key="#Notifications" timestamp="1606286735077">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2581" y="332" width="594" height="414" key="#Notifications/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606286735077" />
+    <state x="2783" y="223" width="651" height="462" key="#Vim_Emulation" timestamp="1606286779049">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2783" y="223" width="651" height="462" key="#Vim_Emulation/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606286779049" />
+    <state x="2665" y="268" width="424" height="530" key="FileChooserDialogImpl" timestamp="1606286670214">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2665" y="268" width="424" height="530" key="FileChooserDialogImpl/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606286670214" />
+    <state width="1893" height="261" key="GridCell.Tab.0.bottom" timestamp="1606289598975">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1893" height="261" key="GridCell.Tab.0.bottom/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606289598975" />
+    <state width="1893" height="261" key="GridCell.Tab.0.center" timestamp="1606289598974">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1893" height="261" key="GridCell.Tab.0.center/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606289598974" />
+    <state width="1893" height="261" key="GridCell.Tab.0.left" timestamp="1606289598974">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1893" height="261" key="GridCell.Tab.0.left/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606289598974" />
+    <state width="1893" height="261" key="GridCell.Tab.0.right" timestamp="1606289598975">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1893" height="261" key="GridCell.Tab.0.right/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606289598975" />
+    <state x="2364" y="108" width="1031" height="742" key="SettingsEditor" timestamp="1606291694572">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2364" y="108" width="1031" height="742" key="SettingsEditor/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606291694572" />
+    <state x="2020" y="80" width="1720" height="890" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606288165284">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="80" width="1720" height="890" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606288165284" />
+    <state x="3072" y="138" width="638" height="942" key="find.popup" timestamp="1606291610661">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="3072" y="138" width="638" height="942" key="find.popup/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606291610661" />
+    <state x="2602" y="338" width="550" height="389" key="jetbrains.nodejs.interpreters-dialog" timestamp="1606286671344">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2602" y="338" width="550" height="389" key="jetbrains.nodejs.interpreters-dialog/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606286671344" />
+    <state x="2543" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1606288063153">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="231" width="672" height="678" key="search.everywhere.popup/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606288063153" />
+  </component>
+</project>

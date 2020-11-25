@@ -1,0 +1,135 @@
+//
+   Created by fy on 15-12-22.
+extends ../../layout_nomenu
+
+
+block content
+
+    .main-content
+        .page-content
+            form#search-form-id
+                table.searchTable
+                    tr
+                        td 条码编号
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='barcode_long')
+                        td 建库组出库人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_outer')
+                        td 建库组样本剩余量
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_out_residue')
+                    tr
+                        td 上机组接收人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_handover')
+                        td 上机组接收时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_handover_date')
+                        td 上机芯片编码
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_chip_code')
+                    tr
+                        td 上机reads数
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_reads_val')
+                        td 上机q30值
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_q30_val')
+                        td 上机人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operater')
+                    tr
+                        td 上机时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_date')
+                        td 上机审查人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_checker')
+                        td 上机审查时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='operate_check_date')
+                    tr
+                        td 上机组出库人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_outer')
+                        td 上机组样本剩余量
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_out_residue')
+                        td 建库浓度(ng/ul)
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_deep')
+                    tr
+                        td 建库片段大小(bp)
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='storage_part_size')
+                        td 状态
+                        td
+                            select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
+                                option(value='-1') 全部
+                                option(value='14') 未上机
+                                option(value='15') 已上机
+                                option(value='16') 合格
+                                option(value='17') 废弃
+                                option(value='18') 重上机
+                                option(value='19') 已交接
+                        td
+                        td
+                            #btn-search.btn-group
+                                button.btn.btn-info.btn-sm(type='submit')
+                                    i.icon.iconfont.icon-chaxun.bigger-110 &nbsp;&nbsp;搜&nbsp;索
+                                button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                                    i.icon-angle-down.icon-only
+                                ul.dropdown-menu.dropdown-yellow
+                                    li
+                                        a#btn-search-more(href='javascript:void(0);') 显示更多搜索项
+                            button.btn.btn-sm(type='reset')
+                                i.icon.iconfont.icon-qingchu.bigger-110
+
+            div.my-toolbar
+                #btn-cxd.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showEditDialog(this)")
+                        i.icon.iconfont.icon-luru.bigger-110 &nbsp;录入上机信息
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("上机录入人员")') 不记住上机录入人员
+                        //li
+                            a(href='#') Separated link
+                span
+                #btn-sh.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showShDialog(this)",disabled)
+                        i.icon.iconfont.icon-shenhe.bigger-110 &nbsp;审核
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("审核人员")') 不记住审核人员
+                span
+                //button#btn-rk-id.btn.btn-info.btn-sm(onclick="rk(this)")
+                    i.icon-inbox.bigger-110 入库
+                #btn-ck.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showCkDialog(this)")
+                        i.icon.iconfont.icon-outstock.bigger-110 &nbsp;批量出库
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("出库人员")') 不记住出库人员
+                        li
+                            a(href='javascript:clearUser("交接人员")') 不记住交接人员
+                span
+                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
+                    i.icon.iconfont.icon-x-xlsx.bigger-110 &nbsp;导出EXCEL
+                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
+                    i.icon-print.bigger-110 打印
+                span
+                    label.pull-right.inline(style="margin-top:10px;")
+                        small.muted 表格显示模式:
+                        input#id-button-borders.ace.ace-switch.ace-switch-5(checked="", type="checkbox", onclick="switchTableModel(this)")
+                        span.lbl
+
+            table#grid-table
+            #grid-pager
+    script(type='text/javascript',src="javascripts/dna/operate.js")

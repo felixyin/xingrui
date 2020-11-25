@@ -1,0 +1,134 @@
+//
+   Created by fy on 15-12-22.
+extends ../../layout_nomenu
+
+
+block content
+
+    .main-content
+        .page-content
+            form#search-form-id
+                table.searchTable
+                    tr
+                        td 条码编号
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='barcode_long')
+                        td 分析报告组接收人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='report_handover')
+                        td 分析报告组接收时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='report_handover_date')
+                    tr
+                        td 分析结果
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='report_result')
+                        td 建议
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='report_advice')
+                        td 是否发送
+                        td
+                            select.col-xs-12.clo-sm-10(style="width:180px;", name='report_is_send', placeholder='')
+                                option(value='') 全部
+                                option(value='1') 发送
+                                option(value='2') 不发送
+                    tr
+                        td 分析人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='reporter')
+                        td 分析时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='report_date')
+                        td 报告发送人
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='report_sender')
+                    tr
+                        td 报告发送时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='report_send_date')
+                        td 上机芯片编码
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_chip_code')
+                        td 上机reads数
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_reads_val')
+                    tr
+                        td 上机q30值
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='operate_q30_val')
+                        td 状态
+                        td
+                            select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
+                                option(value='-1') 全部
+                                option(value='19') 未分析
+                                option(value='20') 已分析
+                                option(value='21') 报告已发送
+                        td
+                        td
+                            #btn-search.btn-group
+                                button.btn.btn-info.btn-sm(type='submit')
+                                    i.icon.iconfont.icon-chaxun.bigger-110 &nbsp;&nbsp;搜&nbsp;索
+                                button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                                    i.icon-angle-down.icon-only
+                                ul.dropdown-menu.dropdown-yellow
+                                    li
+                                        a#btn-search-more(href='javascript:void(0);') 显示更多搜索项
+                            button.btn.btn-sm(type='reset')
+                                i.icon.iconfont.icon-qingchu.bigger-110
+
+            div.my-toolbar
+                #btn-cxd.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showEditDialog(this)")
+                        i.icon.iconfont.icon-luru.bigger-110 &nbsp;录入分析报告信息
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("分析报告录入人员")') 不记住分析报告录入人员
+                        //li
+                            a(href='#') Separated link
+                span
+                #btn-fs.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showFsDialog(this)",disabled)
+                        i.icon-envelope-alt.bigger-110 &nbsp;发送
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("发送人员")') 不记住发送人员
+                span
+                #btn-sh.btn-group.hide
+                    button.btn.btn-info.btn-sm(onclick="showShDialog(this)",disabled)
+                        i.icon.iconfont.icon-shenhe.bigger-110 &nbsp;审核
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("审核人员")') 不记住审核人员
+                span
+                //button#btn-rk-id.btn.btn-info.btn-sm(onclick="rk(this)")
+                    i.icon-inbox.bigger-110 入库
+                #btn-ck.btn-group.hide
+                    button.btn.btn-info.btn-sm(onclick="showCkDialog(this)")
+                        i.icon.iconfont.icon-outstock.bigger-110 &nbsp;批量出库
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("出库人员")') 不记住出库人员
+                        li
+                            a(href='javascript:clearUser("交接人员")') 不记住交接人员
+                span
+                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
+                    i.icon.iconfont.icon-x-xlsx.bigger-110 &nbsp;导出EXCEL
+                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
+                    i.icon-print.bigger-110 打印
+                span
+                    label.pull-right.inline(style="margin-top:10px;")
+                        small.muted 表格显示模式:
+                        input#id-button-borders.ace.ace-switch.ace-switch-5(checked="", type="checkbox", onclick="switchTableModel(this)")
+                        span.lbl
+                        
+            table#grid-table
+            #grid-pager
+    script(type='text/javascript',src="javascripts/dna/report.js")

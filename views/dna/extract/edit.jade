@@ -1,0 +1,74 @@
+extends ../../layout_nomenu
+
+block content
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-iframe.hide(name='edit-iframe')
+                form#edit-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-0')
+                        .col-xs-9
+                            input#ff-0.col-xs-6(type='text', name='id', value='#{id || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-24') Qubit浓度(ng/ul)
+                        .col-xs-9
+                            input#ff-24.col-xs-6(type='number', name='extract_qbite_deep', value='#{extract_qbite_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-25') epoch浓度(ng/ul)
+                        .col-xs-9
+                            input#ff-25.col-xs-6(type='number', name='extract_epoch_deep', value='#{extract_epoch_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-26') 纯度(%)
+                        .col-xs-9
+                            input#ff-26.col-xs-6(type='number', name='extract_purity_deep', value='#{extract_purity_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-27') 片段大小(bp)
+                        .col-xs-9
+                            input#ff-27.col-xs-6(type='number', name='extract_part_size', value='#{extract_part_size || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-28') 打断后片段(bp)
+                        .col-xs-9
+                            input#ff-28.col-xs-6(type='number', name='extract_part_after_break', value='#{extract_part_after_break || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-29') 提取人员
+                        .col-xs-9
+                            input#ff-29.col-xs-6(type='text', name='extracter', value='#{extracter || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-50') 状态
+                        .col-xs-9
+                            input#ff-50.col-xs-6(type='text', name='status', value='#{status || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+
+    script.
+        $(".ipt-date").datepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            pickerPosition: "bottom-right"
+        });
+
+

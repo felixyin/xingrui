@@ -1,0 +1,24 @@
+{
+  "name": "sysm",
+  "version": "0.0.1",
+  "homepage": "",
+  "authors": [
+    "hchtz <ybkk1027@foxmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "clipboard": "^1.5.16",
+    "animsition": "blivesta/animsition#~4.0.1"
+  }
+}

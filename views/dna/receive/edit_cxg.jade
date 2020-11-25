@@ -1,0 +1,149 @@
+extends ../../layout_nomenu
+
+block content
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-cxg-iframe.hide(name='edit-cxg-iframe')
+                form#edit-cxg-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-cxg-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-ctmbh') 条码编号
+                        .col-xs-9
+                            input#ff-ctmbh.col-xs-6(type='text', name='barcode_long', value='#{barcode_long || ""}',  placeholder='请扫描长采血管条码或录入条码编号')
+                            span.help-inline.col-xs-6
+                                button#btn-ctm-scan-id.btn.btn-xs.btn-warning(type='button')
+                                    i.icon-undo 重扫
+                                span.middle.hide Inline help text
+                    .space-4
+                    //.form-group
+                    //    label.col-xs-3.control-label.no-padding-right(for='ff-dtmbh') 短条码编号
+                    //    .col-xs-9
+                    //        input#ff-dtmbh.col-xs-6(type='text', name='barcode_short', value='#{barcode_short || ""}', readonly, placeholder='请扫描短采血管条码或录入条码编号')
+                    //        span.help-inline.col-xs-6
+                    //            button#btn-dtm-scan-id.btn.btn-xs.btn-warning(type='button')
+                    //                i.icon-undo 重扫
+                    //            span.middle.hide Inline help text
+                    //.space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
+                        .col-xs-9
+                            input#ff-15.col-xs-6(type='text', name='changer', value='#{changer || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 状态
+                        .col-xs-9
+                            input#ff-20.col-xs-6(type='text', name='status', value='#{status || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-auto-save') 自动保存
+                        .col-xs-9
+                            input#ff-auto-save.ace.ace-switch.ace-switch-7.col-xs-6(type='checkbox')
+                            span.lbl
+                    .space-4
+
+
+    script.
+
+        $('#btn-ctm-scan-id').hide();
+        $('#btn-dtm-scan-id').hide();
+        var ctmbh = $('#ff-ctmbh').val();
+        if (ctmbh) {// 修改
+            $('#ff-ctmbh').attr('readonly', true);
+            $('#ff-dtmbh').removeAttr('readonly').focus();
+            itvl2 = setInterval(function () {
+                $('#ff-dtmbh').focus();
+            }, 200);
+        } else { // 新增
+            var itvl = setInterval(function () {
+                $('#ff-ctmbh').focus();
+            }, 200);
+            $('#ff-ctmbh').change(function () {
+                clearInterval(itvl);
+                $('#btn-ctm-scan-id').show();
+                $('#ff-ctmbh').attr('readonly', true);
+                submitForm();
+                if ($('#ff-dtmbh').val())return;
+                $('#ff-dtmbh').removeAttr('readonly').focus();
+                itvl2 = setInterval(function () {
+                    $('#ff-dtmbh').focus();
+                }, 200);
+            });
+
+            $('#btn-ctm-scan-id').click(function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                clearInterval(itvl2);
+                itvl = setInterval(function () {
+                    $('#ff-ctmbh').focus();
+                }, 200);
+                $('#ff-ctmbh').removeAttr('readonly').val('').focus();
+                return false;
+            });
+        }
+
+        var itvl2 = null;
+
+        function clearItvl2() {
+            clearInterval(itvl2);
+            $('#btn-dtm-scan-id').show();
+            $('#ff-dtmbh').attr('readonly', true);
+            submitForm();
+        }
+
+        $('#ff-dtmbh').change(function () {
+            var self = this;
+            var barcode_short = $(this).val();
+            $.post('dna/receive/getByBarcodeShort', {
+                barcode_short: barcode_short
+            }, function (rows) {
+                if (rows && rows.length == 1) {
+                    var row = rows[0];
+                    var barcode_long = row.barcode_long;
+                    // console.log(ctmbh, barcode_long);
+                    if (ctmbh == barcode_long) {
+                        Toast.show('此短条码相同,请换一个:' + barcode_short);
+                        $(self).val('');
+                    }else{
+                        Toast.show('此短条码已被使用,请换一个:' + barcode_short);
+                        $(self).val('');
+                    }
+                } else {
+                    clearItvl2();
+                }
+            });
+        });
+
+        $('#btn-dtm-scan-id').click(function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            itvl2 = setInterval(function () {
+                $('#ff-dtmbh').focus();
+            }, 200);
+            $('#ff-dtmbh').removeAttr('readonly').val('').focus();
+            return false;
+        });
+
+        var isAutoSave = localStorage.getItem('_auto_save_addCxg');
+        if (isAutoSave == '1') {
+            $('#ff-auto-save').prop('checked', true);
+        }
+
+        $('#ff-auto-save').change(function () {
+            var value = $('#ff-auto-save').prop('checked');
+            localStorage.setItem('_auto_save_addCxg', value ? '1' : '0');
+        });
+
+        function submitForm() {
+            if ($('#ff-auto-save').prop('checked')) {
+                var ctm = $('#ff-ctmbh').val();
+                var dtm = $('#ff-dtmbh').val();
+                if (ctm && dtm) {
+                    $('#edit-cxg-form').submit();
+                }
+            }
+        }
+

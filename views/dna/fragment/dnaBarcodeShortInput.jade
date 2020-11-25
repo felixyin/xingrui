@@ -1,0 +1,77 @@
+.form-group(id='fg-dtmbh-#{idx}')
+    label.col-xs-3.control-label.no-padding-right(for='ff-dtmbh-#{idx}') 条码编号
+    .col-xs-9
+        input.my-dtmbh.col-xs-6(id='ff-dtmbh-#{idx}', type='text', name='barcode_long', placeholder='请扫描短采血管条码或录入条码编号')
+        span.help-inline.col-xs-6
+            button.btn.btn-xs.btn-danger(id='btn-dtm-del-id-#{idx}', type='button')
+                i.icon-trash 删除
+            span.middle(id='help-dtm-id-#{idx}') Inline help text
+    script.
+        $('#btn-dtm-del-id-#{idx}').hide();
+        $('#help-dtm-id-#{idx}').hide();
+        var itvl#{idx} = setInterval(function () {
+            $('#ff-dtmbh-#{idx}').focus();
+        }, 200);
+
+        $('#ff-dtmbh-#{idx}').change(function () {
+            var self = $(this);
+            var barcode_long = self.val();
+            var dtmArray = $('.my-dtmbh').map(function (i, v) {
+                var vv = $(v).val();
+                if (vv)return vv;
+            }).get();
+            var sameCount = 0;
+            for (var i = dtmArray.length - 1; i >= 0; i--) {
+                var dtm = dtmArray[i];
+                if (dtm === barcode_long) {
+                    ++sameCount;
+                    if (sameCount >= 2) {
+                        Toast.show('一次不能出库两个一样条码的试管:' + barcode_long);
+                        self.val('');
+                        return;
+                    }
+                }
+            }
+            clearInterval(itvl#{idx});
+            $('#btn-dtm-del-id-#{idx}').show();
+            $('#ff-dtmbh-#{idx}').attr('readonly', true);
+
+            $.post('dna/receive/getByBarcodeShort', {
+                barcode_long: barcode_long
+            }, function (rows) {
+                if (rows && rows.length == 1) {
+                    var row = rows[0];
+                    var count = row.sample_out_residue;
+                    if (row.status == 3 /*已审批且入库*/ || row.status == 8/*重提取*/) { //已审批
+                        if (count == 0) {
+                            Toast.show('可能此条码的试管已经全部出库了:' + barcode_long);
+                            $('#fg-dtmbh-#{idx}').slideUp(800, function () {
+                                $(this).remove();
+                            });
+                        } else if (count > 0) {
+                            $('#help-dtm-id-#{idx}').text('剩余数量:' + (count - 1)).show();
+                        }
+                    } else {
+                        Toast.show('此条码的试管福满足出库条件,不能出库:' + barcode_long);
+                        $('#fg-dtmbh-#{idx}').slideUp(800, function () {
+                            $(this).remove();
+                        });
+                    }
+                } else {
+                    Toast.show('数据库中不存在此短条码:' + barcode_long);
+                    $('#fg-dtmbh-#{idx}').slideUp(800, function () {
+                        $(this).remove();
+                    });
+                }
+            });
+            myNext();
+        });
+        $('#btn-dtm-del-id-#{idx}').click(function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            clearInterval(itvl#{idx});
+            $('#fg-dtmbh-#{idx}').slideUp(800, function () {
+                $(this).remove();
+            });
+            return false;
+        });

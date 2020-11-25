@@ -1,0 +1,543 @@
+extends ../../layout_nomenu
+
+block content
+
+    style.
+        .control-label {
+            text-align: right;
+        }
+
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-iframe.hide(name='edit-iframe')
+                form#edit-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-0')
+                        .col-xs-9
+                            input#ff-0.col-xs-6(type='text', name='id', value='#{id || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-1') 条码编号
+                        .col-xs-9
+                            input#ff-1.col-xs-6(type='text', name='barcode_long', value='#{barcode_long || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-2') 医院名称
+                        .col-xs-9
+                            input#ff-2.col-xs-6(type='text', name='hospital', value='#{hospital || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-3') 样本编号
+                        .col-xs-9
+                            input#ff-3.col-xs-6(type='text', name='sample_code', value='#{sample_code || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-4') 采样日期
+                        .col-xs-9
+                            input#ff-4.col-xs-6.ipt-date(type='text', name='sample_date', value='#{sample_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-5') 接收日期
+                        .col-xs-9
+                            input#ff-5.col-xs-6.ipt-date(type='text', name='receive_date', value='#{receive_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-6') 姓名
+                        .col-xs-9
+                            input#ff-6.col-xs-6(type='text', name='real_name', value='#{real_name || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-7') 身份证
+                        .col-xs-9
+                            input#ff-7.col-xs-6(type='text', name='id_card', value='#{id_card || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-8') 年龄
+                        .col-xs-9
+                            input#ff-8.col-xs-6(type='number', name='age', value='#{age || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-9') 孕周
+                        .col-xs-9
+                            input#ff-9.col-xs-6(type='text', name='pregnancy_week', value='#{pregnancy_week || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-9') 孕天
+                        .col-xs-9
+                            input#ff-90.col-xs-6(type='text', name='pregnancy_day', value='#{pregnancy_day|| ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-10') 妊娠情况
+                        .col-xs-9
+                            input#ff-10.col-xs-6(type='text', name='pregnancy_condition', value='#{pregnancy_condition || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-11') 不良孕产史
+                        .col-xs-9
+                            input#ff-11.col-xs-6(type='text', name='pregnancy_bad_history', value='#{pregnancy_bad_history || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-12') 备注
+                        .col-xs-9
+                            textarea#ff-12.col-xs-6.autosize-transition(name='comments', rows=5, placeholder='')
+                                | #{comments || ""}
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-13') 录入人员
+                        .col-xs-9
+                            input#ff-13.col-xs-6.ipt-person(type='text', name='inputter', value='#{inputter || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-14') 录入日期
+                        .col-xs-9
+                            input#ff-14.col-xs-6.ipt-date(type='text', name='input_date', value='#{input_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    //.space-4
+                    //.form-group
+                    //    label.col-xs-3.control-label.no-padding-right(for='ff-15') 换管人员
+                    //    .col-xs-9
+                    //        input#ff-15.col-xs-6.ipt-person(type='text', name='changer', value='#{changer || ""}', placeholder='')
+                    //        span.help-inline.col-xs-6
+                    //            span.middle.hide Inline help text
+                    //.space-4
+                    //.form-group
+                    //    label.col-xs-3.control-label.no-padding-right(for='ff-16') 换管日期
+                    //    .col-xs-9
+                    //        input#ff-16.col-xs-6.ipt-date(type='text', name='change_date', value='#{change_date || ""}', placeholder='')
+                    //        span.help-inline.col-xs-6
+                    //            span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-17') 审批人员
+                        .col-xs-9
+                            input#ff-17.col-xs-6.ipt-person(type='text', name='checker', value='#{checker || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-18') 审批日期
+                        .col-xs-9
+                            input#ff-18.col-xs-6.ipt-date(type='text', name='check_date', value='#{check_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-19') 采血管入库人
+                        .col-xs-9
+                            input#ff-19.col-xs-6.ipt-person(type='text', name='warehouser', value='#{warehouser||""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 采血管入库位置
+                        .col-xs-9
+                            select#ff-20.col-xs-6( name='warehouse_place', value='#{warehouse_place || ""}', placeholder='')
+                                option(value='未知') 未知
+                                - var  n = 1;
+                                while n < 1000
+                                    - var value = '冻存盒' + n++;
+                                    if value == warehouse_place
+                                        option(value='#{value}', selected='selected')=value
+                                    else
+                                        option(value='#{value}')=value
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-21') 采血管入库时间
+                        .col-xs-9
+                            input#ff-21.col-xs-6.ipt-date(type='text', name='warehouse_date', value='#{warehouse_date||""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    //.form-group
+                    //    label.col-xs-3.control-label.no-padding-right(for='ff-19') 短条码编号
+                    //    .col-xs-9
+                    //        input#ff-19.col-xs-6(type='text', name='barcode_short', value='#{barcode_short || ""}', placeholder='')
+                    //        span.help-inline.col-xs-6
+                    //            span.middle.hide Inline help text
+                    //.space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 采血管出库人
+                        .col-xs-9
+                            input#ff-20.col-xs-6.ipt-person(type='text', name='sample_outer', value='#{sample_outer || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-21') 接收组样本剩余量
+                        .col-xs-9
+                            input#ff-21.col-xs-6(type='text', name='sample_out_residue', value='#{sample_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-22') 提取组接收人
+                        .col-xs-9
+                            input#ff-22.col-xs-6.ipt-person(type='text', name='extract_handover', value='#{extract_handover || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-23') 提取组接收时间
+                        .col-xs-9
+                            input#ff-23.col-xs-6.ipt-date(type='text', name='extract_handover_date', value='#{extract_handover_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-24') Qubit浓度(ng/ul)
+                        .col-xs-9
+                            input#ff-24.col-xs-6(type='text', name='extract_qbite_deep', value='#{extract_qbite_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-25') epoch浓度(ng/ul)
+                        .col-xs-9
+                            input#ff-25.col-xs-6(type='text', name='extract_epoch_deep', value='#{extract_epoch_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-26') 纯度(%)
+                        .col-xs-9
+                            input#ff-26.col-xs-6(type='text', name='extract_purity_deep', value='#{extract_purity_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-27') 片段大小(bp)
+                        .col-xs-9
+                            input#ff-27.col-xs-6(type='text', name='extract_part_size', value='#{extract_part_size || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-28') 打断后片段(bp)
+                        .col-xs-9
+                            input#ff-28.col-xs-6(type='text', name='extract_part_after_break', value='#{extract_part_after_break || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-29') 提取人员
+                        .col-xs-9
+                            input#ff-29.col-xs-6.ipt-person(type='text', name='extracter', value='#{extracter || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-30') 提取时间
+                        .col-xs-9
+                            input#ff-30.col-xs-6.ipt-date(type='text', name='extract_date', value='#{extract_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-31') 提取审核人
+                        .col-xs-9
+                            input#ff-31.col-xs-6.ipt-person(type='text', name='extract_checker', value='#{extract_checker || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-32') 提取审核时间
+                        .col-xs-9
+                            input#ff-32.col-xs-6.ipt-date(type='text', name='extract_check_date', value='#{extract_check_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-33') 提取出库人
+                        .col-xs-9
+                            input#ff-33.col-xs-6.ipt-person(type='text', name='extract_outer', value='#{extract_outer || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-34') 提取组样本剩余量
+                        .col-xs-9
+                            input#ff-34.col-xs-6(type='text', name='extract_out_residue', value='#{extract_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-35') 建库组接收人
+                        .col-xs-9
+                            input#ff-35.col-xs-6.ipt-person(type='text', name='storage_handover', value='#{storage_handover || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-36') 建库组接收时间
+                        .col-xs-9
+                            input#ff-36.col-xs-6.ipt-date(type='text', name='storage_handover_date', value='#{storage_handover_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度(ng/ul)
+                        .col-xs-9
+                            input#ff-37.col-xs-6(type='text', name='storage_deep', value='#{storage_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-373') 建库index号
+                        .col-xs-9
+                            input#ff-373.col-xs-6(type='text', name='storage_index', value='#{storage_index || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小(bp)
+                        .col-xs-9
+                            input#ff-38.col-xs-6(type='text', name='storage_part_size', value='#{storage_part_size || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-39') 建库人
+                        .col-xs-9
+                            input#ff-39.col-xs-6.ipt-person(type='text', name='storager', value='#{storager || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-40') 建库时间
+                        .col-xs-9
+                            input#ff-40.col-xs-6.ipt-date(type='text', name='storage_date', value='#{storage_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-41') 建库审查人
+                        .col-xs-9
+                            input#ff-41.col-xs-6.ipt-person(type='text', name='storage_checker', value='#{storage_checker || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-42') 建库审查时间
+                        .col-xs-9
+                            input#ff-42.col-xs-6.ipt-date(type='text', name='storage_check_date', value='#{storage_check_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-43') 建库组出库人
+                        .col-xs-9
+                            input#ff-43.col-xs-6.ipt-person(type='text', name='storage_outer', value='#{storage_outer || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-44') 建库组样本剩余量
+                        .col-xs-9
+                            input#ff-44.col-xs-6(type='text', name='storage_out_residue', value='#{storage_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-45') 上机组接收人
+                        .col-xs-9
+                            input#ff-45.col-xs-6.ipt-person(type='text', name='operate_handover', value='#{operate_handover || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-46') 上机组接收时间
+                        .col-xs-9
+                            input#ff-46.col-xs-6.ipt-date(type='text', name='operate_handover_date', value='#{operate_handover_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-47') 上机芯片编码
+                        .col-xs-9
+                            input#ff-47.col-xs-6(type='text', name='operate_chip_code', value='#{operate_chip_code || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-48') 上机reads数
+                        .col-xs-9
+                            input#ff-48.col-xs-6(type='text', name='operate_reads_val', value='#{operate_reads_val || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-49') 上机q30值
+                        .col-xs-9
+                            input#ff-49.col-xs-6(type='text', name='operate_q30_val', value='#{operate_q30_val || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-50') 上机人
+                        .col-xs-9
+                            input#ff-50.col-xs-6.ipt-person(type='text', name='operater', value='#{operater || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-51') 上机时间
+                        .col-xs-9
+                            input#ff-51.col-xs-6.ipt-date(type='text', name='operate_date', value='#{operate_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-52') 上机审查人
+                        .col-xs-9
+                            input#ff-52.col-xs-6.ipt-person(type='text', name='operate_checker', value='#{operate_checker || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-53') 上机审查时间
+                        .col-xs-9
+                            input#ff-53.col-xs-6.ipt-date(type='text', name='operate_check_date', value='#{operate_check_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-54') 上机组出库人
+                        .col-xs-9
+                            input#ff-54.col-xs-6.ipt-person(type='text', name='operate_outer', value='#{operate_outer || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-55') 上机组样本剩余量
+                        .col-xs-9
+                            input#ff-55.col-xs-6(type='text', name='operate_out_residue', value='#{operate_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-56') 分析报告组接收人
+                        .col-xs-9
+                            input#ff-56.col-xs-6.ipt-person(type='text', name='report_handover', value='#{report_handover || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-57') 分析报告组接收时间
+                        .col-xs-9
+                            input#ff-57.col-xs-6.ipt-date(type='text', name='report_handover_date', value='#{report_handover_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-58') 分析结果
+                        .col-xs-9
+                            textarea#ff-58.col-xs-6.autosize-transition(name='report_result', rows=5, placeholder='')
+                                | #{report_result || ""}
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-59') 建议
+                        .col-xs-9
+                            textarea#ff-59.col-xs-6.autosize-transition(name='report_advice', rows=5, placeholder='')
+                                | #{report_advice || ""}
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-60') 是否发送
+                        .col-xs-9
+                            select#ff-60.col-xs-6(name='report_is_send', value='#{report_is_send || ""}', placeholder='')
+                                each label,value in {1:'不发送',2:'发送'}
+                                    if value == report_is_send
+                                        option(value='#{value}',selected='selected')=label
+                                    else
+                                        option(value='#{value}')=label
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-61') 分析人
+                        .col-xs-9
+                            input#ff-61.col-xs-6.ipt-person(type='text', name='reporter', value='#{reporter || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-62') 分析时间
+                        .col-xs-9
+                            input#ff-62.col-xs-6.ipt-date(type='text', name='report_date', value='#{report_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-63') 报告发送人
+                        .col-xs-9
+                            input#ff-63.col-xs-6.ipt-person(type='text', name='report_sender', value='#{report_sender || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-64') 报告发送时间
+                        .col-xs-9
+                            input#ff-64.col-xs-6.ipt-date(type='text', name='report_send_date', value='#{report_send_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-65') 状态
+                        .col-xs-9
+                            select#ff-65.col-xs-6( name='status', value='#{status || ""}', placeholder='')
+                                each label,value in {0: '已删除', 1: '已录入', 2: '已审批', 3: '已入库', 4: '已出库', 5: '已提取', 6: '提取合格', 7: '提取废弃', 8: '重提取', 9: '提取已交接', 10: '已建库', 11: '建库合格', 12: '建库废弃', 13: '重建库', 14: '建库已交接', 15: '已上机', 16: '上机合格', 17: '上机废弃', 18: '重上机', 19: '上机已交接', 20: '已分析', 21: '报告已发送'}
+                                    if value == status
+                                        option(value='#{value}', selected='selected')=label
+                                    else
+                                        option(value='#{value}')=label
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .space-4
+                    .space-4
+
+    script.
+        $(".ipt-date").datepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            pickerPosition: "bottom-right"
+        });
+        $('.ipt-person').selectUser();

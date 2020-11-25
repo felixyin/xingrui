@@ -1,0 +1,70 @@
+extends ../../layout_nomenu
+
+block content
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-iframe.hide(name='edit-iframe')
+                form#edit-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-0')
+                        .col-xs-9
+                            input#ff-0.col-xs-6(type='text', name='id', value='#{id || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-36') 样本剩余量
+                        .col-xs-9
+                            input#ff-36.col-xs-6(type='number', name='extract_out_residue', value='#{extract_out_residue || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-37') 建库浓度(ng/ul)
+                        .col-xs-9
+                            input#ff-37.col-xs-6(type='number', name='storage_deep', value='#{storage_deep || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-3') 建库index号
+                        .col-xs-9
+                            input#ff-3.col-xs-6(type='text', name='storage_index', value='#{storage_index|| ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-38') 建库片段大小(bp)
+                        .col-xs-9
+                            input#ff-38.col-xs-6(type='number', name='storage_part_size', value='#{storage_part_size || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-39') 建库人
+                        .col-xs-9
+                            input#ff-39.col-xs-6(type='text', name='storager', value='#{storager || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-50') 状态
+                        .col-xs-9
+                            input#ff-50.col-xs-6(type='text', name='status', value='#{status || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+
+    script.
+        $(".ipt-date").datepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            pickerPosition: "bottom-right"
+        });
+
+
+
+
+

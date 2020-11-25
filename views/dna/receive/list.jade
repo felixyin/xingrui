@@ -1,0 +1,149 @@
+//
+   Created by fy on 15-12-22.
+extends ../../layout_nomenu
+
+
+block content
+
+    .main-content
+        .page-content
+            form#search-form-id
+                table.searchTable
+                    tr
+                        td 条码编号
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='barcode_long', placeholder='请扫描条码或输入编号')
+                        td 样本编号
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='sample_code')
+                        td 医院名称
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='hospital')
+                    tr
+                        td 采样日期
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='sample_date')
+                        td 接收日期
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='receive_date')
+                        td 姓名
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='real_name')
+                    tr
+                        td 身份证号
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='id_card')
+                        td 年龄
+                        td
+                            input.col-xs-10.col-sm-5(type='number' , name='age')
+                        td 孕周
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='pregnancy_week')
+                    //tr
+                        td 提取组接收人
+                        td
+                            input.col-xs-10.col-sm-5.ipt-person(type='text' , name='extract_handover')
+                        td 提取组接收时间
+                        td
+                            input.col-xs-10.col-sm-5.ipt-date(type='text' , name='extract_handover_date')
+                        td
+                        td
+                    tr
+                        td 孕天
+                        td
+                            input.col-xs-10.col-sm-5(type='text' , name='pregnancy_day')
+                        td 状态
+                        td
+                            select#status.col-xs-12.clo-sm-10(style="width:180px;", name='status',placeholder='')
+                                option(value='-1') 全部
+                                option(value='0') 已废弃
+                                option(value='1') 已录入
+                                option(value='2') 已审批
+                                option(value='3') 已入库
+                                option(value='4') 已出库
+                        td
+                        td
+                            #btn-search.btn-group
+                                button.btn.btn-info.btn-sm(type='submit',style="width:114px;")
+                                    i.icon.iconfont.icon-chaxun.bigger-110 &nbsp;&nbsp;搜&nbsp;索
+                                //button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                                    i.icon-angle-down.icon-only
+                                //ul.dropdown-menu.dropdown-yellow
+                                    li
+                                        a#btn-search-more(href='javascript:void(0);') 显示更多搜索项
+                            button.btn.btn-sm(type='reset')
+                                i.icon.iconfont.icon-qingchu.bigger-110
+
+            div.my-toolbar
+                //button#btn-lrcxd-id.btn.btn-info.btn-sm(onclick="lrcxd(this)")
+                    i.icon-edit.bigger-110 录入采血单
+                #btn-cxd.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showCxdDialog(this)")
+                        i.icon.iconfont.icon-luru.bigger-110 &nbsp;批量录入采血单
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("采血单录入人员")') 不记住采血单录入人员
+                        //li.divider
+                        //li
+                            a(href='#') Separated link
+                //span
+                //#btn-cxg.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showCxgDialog(this)")
+                        i.icon-edit.bigger-110 &nbsp;&nbsp;更换采血管
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("采血管更换人员")') 不记住采血管更换人员
+                span
+                #btn-sh.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showShDialog(this)",disabled)
+                        i.icon.iconfont.icon-shenhe.bigger-110 &nbsp;审核
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("审核人员")') 不记住审核人员
+                span
+                #btn-rk.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showRkDialog(this)",disabled)
+                        i.icon.iconfont.icon-ruku.bigger-110 &nbsp;入库
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown',disabled)
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("入库人员")') 不记住入库人员
+                #btn-ck.btn-group
+                    button.btn.btn-info.btn-sm(onclick="showCkDialog(this)")
+                        i.icon.iconfont.icon-outstock.bigger-110 &nbsp;批量出库
+                    button.btn.btn-info.dropdown-toggle.btn-sm(data-toggle='dropdown')
+                        i.icon-angle-down.icon-only
+                    ul.dropdown-menu.dropdown-yellow
+                        li
+                            a(href='javascript:clearUser("出库人员")') 不记住出库人员
+                        li
+                            a(href='javascript:clearUser("交接人员")') 不记住交接人员
+                span
+                textarea#barcode-copy-ta(style='width:0px;height:0px;position:absolute;z-index:-100;margin-top:5px;margin-left:5px;')
+                button#btn-copy-id.btn.btn-info.btn-sm(onclick="copyBarcode(this)",data-clipboard-target="#barcode-copy-ta")
+                    i.icon.iconfont.icon-tubiao08.bigger-110 &nbsp;复制条码编号
+                span
+                button#btn-print-id.btn.btn-info.btn-sm(onclick="printBarcode(this)")
+                    i.icon.iconfont.icon-tiaomazhifu.bigger-110  &nbsp;导出条码打印机
+                span
+                button#btn-dc-id.btn.btn-info.btn-sm(onclick="exportCvs(this)")
+                    i.icon.iconfont.icon-x-xlsx.bigger-110 &nbsp;导出EXCEL
+                //button#btn-dy-id.btn.btn-info.btn-sm(onclick="dy(this)")
+                    i.icon-print.bigger-110 打印
+                span
+                    label.pull-right.inline(style="margin-top:10px;")
+                        small.muted 表格显示模式:
+                        input#id-button-borders.ace.ace-switch.ace-switch-5(checked="", type="checkbox", onclick="switchTableModel(this)")
+                        span.lbl
+
+            table#grid-table
+            #grid-pager
+    script(type='text/javascript',src='clipboard/dist/clipboard.min.js')
+    script(type='text/javascript',src="javascripts/dna/receive.js")

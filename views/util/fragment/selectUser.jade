@@ -1,0 +1,13 @@
+.control-group
+    .my-accordion.accordion-style2
+        each ru in roleAndUsers
+            .group
+                each users,roleName in ru
+                    h3.accordion-header=roleName
+                    div
+                        //label.control-label.bolder.blue Radio
+                        each u in users
+                            .radio
+                                label
+                                    input.ace.my-select-user-radio(name='form-field-radio', type='radio',value='#{u.realName}')
+                                    span.lbl #{u.realName}         (角色:#{u.role})

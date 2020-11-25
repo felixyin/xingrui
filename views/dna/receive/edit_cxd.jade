@@ -1,0 +1,205 @@
+extends ../../layout_nomenu
+
+block content
+    .main-content
+        .page-content(style="overflow:scroll;height:450px;")
+            div
+                iframe#edit-cxd-iframe.hide(name='edit-cxd-iframe')
+                form#edit-cxd-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-cxd-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-0')
+                        .col-xs-9
+                            input#ff-0.col-xs-6(type='text', name='id', value='#{id || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-1') 条码编号
+                        .col-xs-9
+                            input#ff-1.col-xs-6(type='text', name='barcode_long', value='#{barcode_long || ""}',  placeholder='请扫描条码或录入条码编号')
+                            span.help-inline.col-xs-6
+                                button#btn-scan-id.btn.btn-xs.btn-warning(type='button')
+                                    i.icon-undo 重扫
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-2') 医院名称
+                        .col-xs-9
+                            input#ff-2.col-xs-6(type='text', name='hospital', value='#{hospital || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-3') 样本编号
+                        .col-xs-9
+                            input#ff-3.col-xs-6(type='text', name='sample_code', value='#{sample_code || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-cy-date') 采样日期
+                        .col-xs-9
+                            input#ff-cy-date.col-xs-6(type='text', name='sample_date', value='#{sample_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-js-date') 接收日期
+                        .col-xs-9
+                            input#ff-js-date.col-xs-6(type='text', name='receive_date', value='#{receive_date || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-6') 姓名
+                        .col-xs-9
+                            input#ff-6.col-xs-6(type='text', name='real_name', value='#{real_name || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-7') 身份证
+                        .col-xs-9
+                            input#ff-7.col-xs-6(type='text', name='id_card', value='#{id_card || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-cs-date') 年龄
+                        .col-xs-9
+                            input#ff-cs-date.col-xs-6(type='number', name='age', value='#{age || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-9') 孕周
+                        .col-xs-9
+                            input#ff-9.col-xs-6(type='text', name='pregnancy_week', value='#{pregnancy_week || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-9') 孕天
+                        .col-xs-9
+                            input#ff-99.col-xs-6(type='text', name='pregnancy_day', value='#{pregnancy_day || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-10') 妊娠情况
+                        .col-xs-9
+                            input#ff-10.col-xs-6(type='text', name='pregnancy_condition', value='#{pregnancy_condition || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-11') 不良孕产史
+                        .col-xs-9
+                            input#ff-11.col-xs-6(type='text', name='pregnancy_bad_history', value='#{pregnancy_bad_history || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-12') 备注
+                        .col-xs-9
+                            textarea#ff-12.col-xs-6.autosize-transition(name='comments', rows=5, placeholder='')
+                                | #{comments || ""}
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group
+                        label.col-xs-3.control-label.no-padding-right(for='ff-13') 录入人员
+                        .col-xs-9
+                            input#ff-13.col-xs-6(type='text', name='inputter', value='#{inputter || ""}', readonly, placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+                    .form-group.hide
+                        label.col-xs-3.control-label.no-padding-right(for='ff-20') 状态
+                        .col-xs-9
+                            input#ff-20.col-xs-6(type='text', name='status', value='#{status || ""}', placeholder='')
+                            span.help-inline.col-xs-6
+                                span.middle.hide Inline help text
+                    .space-4
+
+    script.
+
+        var id = $('#ff-0').val();
+
+        if (!id) {
+            window.itvl = setInterval(function () {
+                $('#ff-1').focus();
+            }, 200);
+        }
+
+        var old_barcode_long = '#{barcode_long || ""}';
+
+        $('#ff-1').change(function () {
+            var barcode_long = $(this).val();
+            getCountFromDB({
+                count: {
+                    table: 'dna_flow',
+                    column: 'barcode_long',
+                    value: barcode_long
+                }
+            }, function (result) {
+                if (result.count >= 1) {
+                    if (id && old_barcode_long == barcode_long) { // 修改且与当前编辑条码一样
+                        clearInterval(itvl);
+                        $('#ff-1').attr('readonly', true);
+                        $('#ff-2').focus();
+                    } else {
+                        Toast.show('不能使用此条码,已经存在此条码:' + barcode_long);
+                        $('#ff-1').removeAttr('readonly').val('').focus();
+                    }
+                } else {
+                    clearInterval(itvl);
+                    $('#ff-1').attr('readonly', true);
+                    $('#ff-2').focus();
+                }
+            });
+        });
+
+        $('#btn-scan-id').click(function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            itvl = setInterval(function () {
+                $('#ff-1').focus();
+            }, 200);
+            $('#ff-1').removeAttr('readonly').val('').focus();
+            return false;
+        });
+
+        $("#ff-js-date").datetimepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd hh:ii",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: "bottom-right",
+            minuteStep: 10
+        });
+
+        $("#ff-cy-date").datetimepicker({
+            language: 'zh-CN',
+            format: "yyyy-mm-dd hh:ii",
+            autoclose: true,
+            pickerPosition: "bottom-right",
+            minuteStep: 10
+        }).change(function () {
+            $("#ff-js-date").datetimepicker({
+                language: 'zh-CN',
+                format: "yyyy-mm-dd hh:ii",
+                autoclose: true,
+                todayBtn: true,
+                startDate: $('#ff-cy-date').val(),
+                pickerPosition: "bottom-right",
+                minuteStep: 10
+            });
+        });
+
+
+
+
+
+
+

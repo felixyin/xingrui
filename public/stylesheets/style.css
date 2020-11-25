@@ -1,0 +1,114 @@
+
+.main-content {
+    margin-left: 0 !important;
+}
+
+.ui-jqgrid-view > .ui-jqgrid-titlebar {
+    background: lightgray;
+}
+
+.breadcrumbs, #sidebar-collapse, .alert, .page-header {
+    display: none;
+}
+
+.menu-text {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.searchTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.searchTable tr td:nth-child(odd) {
+    text-align: right;
+    width: 100px;
+    height: 33px;
+}
+
+.searchTable tr td:nth-child(even) {
+    width: 200px;
+    height: 33px;
+}
+
+.searchTable tr td:nth-last-child(1) {
+    width: auto;
+    float: left;
+}
+
+.searchTable input {
+    width: 180px;
+}
+
+.searchTable tr td button:nth-child(1) {
+    width: 95px;
+    margin-right: 10px;
+}
+
+.ui-front {
+    /* FIXME TODO */
+    /*z-index: 10000 !important;*/
+}
+
+/* dialog css */
+.ui-dialog-titlebar-close {
+    display: none;
+}
+
+.my-dialog-save-btn {
+    width: 110px;
+}
+
+table {
+    max-width: 100%;
+    background-color: white;
+}
+
+.my-toolbar > .btn-group, .my-toolbar > button {
+    margin-right: 10px;
+    border-width: 2px;
+}
+
+/*.btn-group > .btn-sm, .btn-group + .btn-sm {*/
+/*border-width: 2px;*/
+/*}*/
+
+.btn-group > .btn-sm, .btn-group + .btn-sm {
+    line-height: 1.7 !important;
+}
+
+.frozen-div {
+    overflow-y: hidden !important;
+    /*border: 1px solid black !important;*/
+    background-color: #2d6987 !important;
+}
+
+.frozen-div > table > thead > tr > th {
+    background-color: lightblue !important;
+}
+
+.cbox {
+    width: 16px !important;
+    height: 16px !important;
+    cursor: pointer;
+}
+
+.searchTable button[type='reset'] {
+    margin-left: 24px!important;
+    /*float: right;*/
+    /*right: 1px;*/
+}
+
+.page-content {
+    padding: 8px 16px 2px!important;
+}
+
+/* fixbug 解决某些列内容超出后导致行高太高的问题：添加省略号解决 */
+.ui-jqgrid-btable tr.jqgrow td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+}

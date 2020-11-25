@@ -1,0 +1,34 @@
+iframe#edit-iframe.hide(name='edit-iframe')
+form#edit-form.form-horizontal(role='form', action='#{action}', method='post', target='edit-iframe', style='height:400x;overflow-x:hidden;overflow-y:scroll;')
+    .form-group.hide
+        label.col-xs-3.control-label.no-padding-right(for='ff-0')
+        .col-xs-9
+            input#ff-0.col-xs-6(type='text', name='ids', value='#{ids || ""}', placeholder='')
+            span.help-inline.col-xs-6
+                span.middle.hide Inline help text
+    .space-4
+    .form-group
+        label.col-xs-3.control-label.no-padding-right(for='ff-20') 入库位置
+        .col-xs-9
+            select#ff-20.col-xs-6( name='warehouse_place', value='#{warehouse_place || ""}', placeholder='')
+                option(value='未知') 未知
+                - var  n = 1;
+                while n < 1000
+                    - var value = '冻存盒' + n++;
+                    if value == warehouse_place
+                        option(value='#{value}', selected='selected')=value
+                    else
+                        option(value='#{value}')=value
+            span.help-inline.col-xs-6
+                span.middle.hide Inline help text
+    .space-4
+    .form-group
+        label.col-xs-3.control-label.no-padding-right(for='ff-19') 入库人
+        .col-xs-9
+            input#ff-19.col-xs-6.ipt-person(type='text', name='warehouser', value='#{warehouser || ""}', readonly, placeholder='')
+            span.help-inline.col-xs-6
+                span.middle.hide Inline help text
+    .space-4
+
+    script.
+

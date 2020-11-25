@@ -1,0 +1,219 @@
+//
+   Created by yinbin on 2015/9/4.
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        base(href='/')
+        title 兴瑞基因检测实验室管理系统
+        meta(name='keywords', content='兴瑞基因检测实验室管理系统,实验室管理系统')
+        meta(name='description', content='兴瑞基因检测实验室管理系统,技术支持：巨锤网络科技')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+        meta(http-equiv='Page-Enter' content='revealTrans(duration=3, transition=12)')
+        meta(http-equiv='Page-Exit' content='revealTrans(duration=3, transition=12)')
+        block css
+            // basic styles
+            link(href='assets/css/bootstrap.min.css', rel='stylesheet')
+            link(rel='stylesheet', href='assets/css/font-awesome.min.css')
+            //if IE 7
+              link(rel='stylesheet', href='assets/css/font-awesome-ie7.min.css')
+            // page specific plugin styles
+            link(rel='stylesheet', href='assets/css/jquery-ui-1.10.3.full.min.css')
+            link(rel='stylesheet',href='assets/css/jquery.gritter.css')
+            link(rel='stylesheet', href='assets/css/datepicker.css')
+            link(rel='stylesheet', href='assets/css/ui.jqgrid.css')
+            // fonts
+            // <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+            // ace styles
+            link(rel='stylesheet', href='assets/css/ace.min.css')
+            link(rel='stylesheet', href='assets/css/ace-rtl.min.css')
+            link(rel='stylesheet', href='assets/css/ace-skins.min.css')
+            //if lte IE 8
+              link(rel='stylesheet', href='assets/css/ace-ie.min.css')
+            // inline styles related to this page
+            link(rel='stylesheet', href='stylesheets/icon/iconfont.css')
+            style.
+                #menu-list-id > li {
+                    display: none;
+                }
+
+                html, body, .main-container-inner, .main-content, #main_target_iframe {
+                    overflow-y: hidden;
+                    height: 100%;
+                }
+
+                #main-container {
+                    overflow: hidden;
+                    height: 93%;
+                }
+
+                #menu-list-id .menu-text {
+                    font-size: 18px;
+                }
+        block script
+            // ace settings handler
+            script(src='assets/js/ace-extra.min.js')
+            // HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+            //if lt IE 9
+              script(src='assets/js/html5shiv.js')
+              script(src='assets/js/respond.min.js')
+            // basic scripts
+            //if !IE
+            script(src='assets/js/jquery-2.0.3.min.js')
+            // <![endif]
+            //if IE
+              script(src='assets/js/jquery-1.10.2.min.js')
+            //if !IE
+            script(type='text/javascript').
+                window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+            // <![endif]
+            //if IE
+              script(type='text/javascript').
+                window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+            script(type='text/javascript').
+                if ("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+            script(src='assets/js/bootstrap.min.js')
+            script(src='assets/js/typeahead-bs2.min.js')
+            // page specific plugin scripts
+            //script(src='assets/js/date-time/bootstrap-datepicker.min.js')
+            //script(src='assets/js/jqGrid/jquery.jqGrid.min.js')
+            //script(src='assets/js/jqGrid/i18n/grid.locale-en.js')
+            // ace scripts
+            script(src='assets/js/ace-elements.min.js')
+            script(src='assets/js/ace.min.js')
+            //script(src='assets/js/bootbox.min.js')
+            //script(src='assets/js/jquery.gritter.min.js')
+            // inline scripts related to this page
+            //script(type='text/javascript', src='javascripts/format.js')
+            //script(src='assets/Highcharts-4.1.7/js/highcharts.js')
+            //script(src='assets/Highcharts-4.1.7/js/modules/exporting.js')
+            script(type='text/javascript',src="javascripts/layout-header.js")
+            script(src='underscore/underscore-min.js')
+            //script(type='text/javascript',src='javascripts/runtime.js')
+            //include include/rpc
+            //include include/template
+
+    body
+        #navbar.navbar.navbar-default(style="background:url(assets/images/nav-background-picture.png);" )
+            script(type='text/javascript').
+                try {
+                    ace.settings.check('navbar', 'fixed')
+                } catch (e) {
+                }
+            #navbar-container.navbar-container(style='')
+                .navbar-header.pull-left
+                    span.navbar-brand(href='#')
+                        //img(src='assets/images/logonew.png',style='width:25px;')
+                        small
+                            i(style='letter-spacing: 8px; font-weight: 900; font-size: 25px; margin-left: 20px;margin-top:5px;') 兴瑞基因检测实验室管理系统
+                    // /.brand
+                a.btn.btn-default.pull-right(href="/logout",style="margin-top:5px;padding-top:0px;") 退出登录
+            // /.container
+        #main-container.main-container
+            script(type='text/javascript').
+                try {
+                    ace.settings.check('main-container', 'fixed')
+                } catch (e) {
+                }
+            .main-container-inner
+                //a#menu-toggler.menu-toggler(href='#')
+                    span.menu-text
+                #sidebar.sidebar(style='height:90%;')
+                    script(type='text/javascript').
+                        try {
+                            ace.settings.check('sidebar', 'fixed')
+                        } catch (e) {
+                        }
+                    #sidebar-shortcuts.sidebar-shortcuts.hide
+                        #sidebar-shortcuts-large.sidebar-shortcuts-large
+                            button.btn.btn-success.tooltip-info(data-rel="tooltip",data-placement="bottom",title="未实现...")
+                                i.icon-signal
+                            button.btn.btn-info
+                                i.icon-pencil
+                            button.btn.btn-warning
+                                i.icon-group
+                            button.btn.btn-danger
+                                i.icon-cogs
+                        #sidebar-shortcuts-mini.sidebar-shortcuts-mini
+                            span.btn.btn-success
+                            span.btn.btn-info
+                            span.btn.btn-warning
+                            span.btn.btn-danger
+                    // #sidebar-shortcuts
+                    ul#menu-list-id.nav.nav-list(style='height:99%;overflow-y:auto;overflow-x:hidden;')
+                        li.active
+                            a.animsition-link(href='about', target='main_target_iframe')
+                                i.icon.iconfont.icon-guanyu
+                                //img(src='assets/images/student-xxzk.png' style='width:%;height:60%')
+                                span.menu-text 关于系统
+                        li
+                            a.animsition-link(href='dna/receive', target='main_target_iframe')
+                                i.icon.iconfont.icon-jieshou
+                                span.menu-text 标本接收管理
+                        li
+                            a.animsition-link(href='dna/extract',target='main_target_iframe')
+                                i.icon.iconfont.icon-yiliao_shiguan_qingxie
+                                span.menu-text DNA提取管理
+                        li
+                            a.animsition-link(href='dna/storage',target='main_target_iframe')
+                                i.icon.iconfont.icon-yibiaojianku-
+                                span.menu-text 建库管理
+                        li
+                            a.animsition-link(href='dna/operate',target='main_target_iframe')
+                                i.icon.iconfont.icon-dnsjiance
+                                span.menu-text 上机管理
+                        li
+                            a.animsition-link(href='dna/report',target='main_target_iframe')
+                                i.icon.iconfont.icon-msnui-report
+                                span.menu-text 分析报告管理
+                        li
+                            a.animsition-link(href='dna/admin',target='main_target_iframe')
+                                i.icon.iconfont.icon-guanliyuan
+                                span.menu-text 超级管理
+                        li
+                            a.animsition-link(href='user',target='main_target_iframe')
+                                i.icon-group
+                                span.menu-text 员工管理
+                        li
+                            a.animsition-link(href='settings',target='main_target_iframe')
+                                i.icon-cogs
+                                span.menu-text 基本设置
+                        //li
+                        //    a.animsition-link(href='import',target='main_target_iframe')
+                        //        img(src='assets/images/teacher-jbqk.png' style='width:%;height:60%')
+                        //        span.menu-text 消息管理
+
+                    #sidebar-collapse.sidebar-collapse
+                        i.icon-double-angle-left(data-icon1='icon-double-angle-left', data-icon2='icon-double-angle-right')
+                    script(type='text/javascript').
+                        try {
+                            ace.settings.check('sidebar', 'collapsed')
+                        } catch (e) {
+                        }
+                .main-content
+                    iframe#main_target_iframe(name='main_target_iframe',frameborder=0,width='100%',src='about')
+
+            // /.main-container-inner
+        // /.main-container
+        //input#fileupload(type="file",name="files[]",data-url="/upload" multiple)
+        script(type='text/javascript',src='javascripts/layout-footer.js')
+        script.
+            (function __showMenu() {
+                $('#menu-list-id>li>a').click(function () {
+                    $('#menu-list-id').children('li').removeClass('active');
+                    $(this).parent().addClass('active');
+                });
+                try {
+                    var menus = '#{menus}'.split(',');
+                    //console.log(menus);
+                    _.each(menus, function (menu) {
+                        //console.log(menu);
+                        if (menu)
+                            $('#menu-list-id').children().filter(':contains("' + menu + '")').show();
+                    });
+                } catch (e) {
+                }
+            })();
+            $('[data-rel=tooltip]').tooltip();
+

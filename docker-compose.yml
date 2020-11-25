@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+    web:
+      container_name: items_xingrui
+      build: .
+#      image: felixyin/sysm-web:latest
+      volumes:
+        - .:/code
+      ports:
+        - '10001:8080'
+#      links:
+#        - mysql
+#        - redis
+#    mysql:
+#      container_name: sysm-mysql
+#      build: ./docker/mysql/
+##      image: felixyin/sysm-mysql
+#      ports:
+#        - '3308:3308'
+#      volumes:
+#        - ./docker/mysql/data:/var/lib/mysql
+#      environment:
+#        - MYSQL_ROOT_PASSWORD=Ybkk1027
+#    redis:
+#      container_name: sysm-redis
+#      build: ./docker/redis/
+##      image: felixyin/sysm-redis
+#      ports:
+#        - '6380:6380'
+#      volumes:
+#        - ./docker/redis/data:/data
+#
