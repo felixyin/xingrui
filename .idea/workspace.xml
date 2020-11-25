@@ -23,9 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb1f3005-ed34-4ee2-944a-e491e8603e31" name="Default Changelist" comment="docker">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/about.jade" beforeDir="false" afterPath="$PROJECT_DIR$/views/about.jade" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +131,7 @@
       <workItem from="1606285415701" duration="1285000" />
       <workItem from="1606286707373" duration="228000" />
       <workItem from="1606287158287" duration="4533000" />
-      <workItem from="1606291700375" duration="9468000" />
+      <workItem from="1606291700375" duration="9663000" />
     </task>
     <task id="LOCAL-00001" summary="docker">
       <created>1606299579543</created>
@@ -142,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606299579543</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="docker">
+      <created>1606308178115</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606308178115</updated>
+    </task>
+    <task id="LOCAL-00003" summary="docker">
+      <created>1606308312624</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606308312624</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,10 +216,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2364" y="58" width="1031" height="742" key="SettingsEditor/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606304990667" />
-    <state x="2478" y="267" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1606299585090">
+    <state x="2478" y="247" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1606308314618">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2478" y="267" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606299585090" />
+    <state x="2478" y="247" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606308314618" />
     <state x="2020" y="80" width="1720" height="890" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606288165284">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -216,10 +228,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="3194" y="278" width="389" height="670" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606297900783" />
-    <state x="3072" y="138" width="638" height="942" key="find.popup" timestamp="1606302015349">
+    <state x="3072" y="138" width="638" height="942" key="find.popup" timestamp="1606308337886">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="3072" y="138" width="638" height="942" key="find.popup/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606302015349" />
+    <state x="3072" y="138" width="638" height="942" key="find.popup/0.27.1920.1004/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606308337886" />
     <state x="2602" y="338" width="550" height="389" key="jetbrains.nodejs.interpreters-dialog" timestamp="1606286671344">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
