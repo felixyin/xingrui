@@ -74,10 +74,10 @@ function ks() {
 if (argv.g || argv.kill) {
     let pid = fs.readFileSync(__dirname + '/PROCESS_ID', 'UTF-8');
     try {
-        console.log('<兴瑞基因检测实验室管理系统>服务集群已停止运行,主进程id是:' + pid);
+        console.log('<基因检测实验室管理系统>服务集群已停止运行,主进程id是:' + pid);
         ks();
     } catch (e) {
-        console.log('<兴瑞基因检测实验室管理系统>服务集群还没启动,不需要停止');
+        console.log('<基因检测实验室管理系统>服务集群还没启动,不需要停止');
     }
     process.exit();
 }
@@ -145,7 +145,7 @@ app.set('port', port);
 
 // 保存当前进程id
 if (process.pid) {
-    console.log('<兴瑞基因检测实验室管理系统>服务集群已启动,主进程id是:' + process.pid);
+    console.log('<基因检测实验室管理系统>服务集群已启动,主进程id是:' + process.pid);
     fs.writeFileSync(__dirname + '/PROCESS_ID', process.pid);
 }
 
